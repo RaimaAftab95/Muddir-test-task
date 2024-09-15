@@ -138,7 +138,7 @@ const Dashboard = () => {
 
 
       {/* New Row with Text and Icons */}
-      <Grid templateColumns="repeat(3, 1fr)" gap={6} mt="4">
+      <Grid templateColumns="repeat(3, 1fr)" gap={6} mt="10">
         <GridItem>
           <HStack spacing="4" justify="center" align="center" h="100%">
             <BiBook fontSize="30px" color="#5876b7" />

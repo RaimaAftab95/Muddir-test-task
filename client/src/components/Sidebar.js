@@ -1,5 +1,18 @@
 import React, { useState } from "react";
-import { Box, Flex, Text, Image, Button, Icon, Divider, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Text,
+  Image,
+  Button,
+  Icon,
+  Divider,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from "@chakra-ui/react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 
 const Sidebar = () => {
@@ -14,7 +27,6 @@ const Sidebar = () => {
       width="250px"
       bg="#F4F6FA"
       color="white"
-      height="100vh"
       position="fixed"
       p="4"
       pl="8"
@@ -22,28 +34,27 @@ const Sidebar = () => {
       maxHeight="100vh"
     >
       {/* Logo */}
-      <Flex align="center" mb="4" pl="4">
+      <Flex align="flex-start">
         <Image src="/Logo.png" alt="Logo" objectFit="contain" />
       </Flex>
 
       {/* User Info */}
-      <Flex direction="row" align="center" mb="4">
+      <Flex direction="row" align="center" mb="2">
         <Flex align="center" mr="4">
           <Image
             src="/Avatar.png"
             alt="User"
-            boxSize="50px"
+            boxSize="80px"
             objectFit="contain"
             borderRadius="full"
           />
         </Flex>
-        <Flex direction="column" mt="10">
+        <Flex direction="column">
           <Text
             fontSize="12px"
             color="black"
             cursor="pointer"
             onClick={handleEmailClick}
-            mt="1"
           >
             <span style={{ fontWeight: "bold" }}>Haseena Jameela</span>
             <br />
@@ -57,17 +68,16 @@ const Sidebar = () => {
       </Flex>
 
       {/* Buttons */}
-      <Flex direction="row" mt="8" gap="4">
+      <Flex direction="row" gap="1">
         <Button
           bg="#DBE2F0"
           color="black"
           fontSize="12px"
           _hover={{ bg: "#BCCFE5" }}
           flex="1"
-          height="40px"
+          height="30px"
           border="none"
           _focus={{ boxShadow: "none" }}
-          className="custom-border-radius"
         >
           Personal
         </Button>
@@ -77,227 +87,135 @@ const Sidebar = () => {
           fontSize="12px"
           _hover={{ bg: "#F0F0F0" }}
           flex="1"
-          height="40px"
+          height="30px"
           border="none"
           _focus={{ boxShadow: "none" }}
-          className="custom-border-radius"
         >
           Invited
         </Button>
       </Flex>
 
       {/* Main Dashboard Box */}
-      <Flex direction="column" mt="8" align="center">
-        <Box bg="#EBF0FA" width="240px" height="300px">
+      <Flex direction="column" mt="5" align="center">
+        <Box bg="#EBF0FA" width="240px" height="90vh">
           <Flex
             direction="column"
             p="2"
-            m="5"
-            bg="#FFFFFF"
-            borderRadius="lg"
+            m="2"
+            bg="#EBF0FA"
+            borderRadius="md"
             boxShadow="md"
-            height="30px"
-            className="custom-border-radius"
           >
-            <Flex align="center" height="100%" px="2">
+            <Flex align="center" bg="#FFFFFF" height="100%" p="2">
               <Icon as={FaStar} fontSize="12px" color="black" mr="2" />
               <Text fontSize="12px" fontWeight="bold" color="black">
                 Dashboard
               </Text>
             </Flex>
 
-            {/* Additional Items */}
-            <Flex direction="column">
+            <Flex direction="column" mt="5">
               <Box as="ul" listStyleType="none" p="0" m="0">
-                <Flex as="li" align="center" mb="0" lineHeight="0" py="1px" mt="5">
-                  <Icon as={FaRegStar} fontSize="12px" color="gray" mr="2" />
-                  <Text fontSize="12px" color="gray">Project History</Text>
-                </Flex>
-                <Flex as="li" align="center" mb="0" lineHeight="0" py="1px">
-                  <Icon as={FaRegStar} fontSize="12px" color="gray" mr="2" />
-                  <Text fontSize="12px" color="gray">Client History</Text>
-                </Flex>
-                <Flex as="li" align="center" mb="0" lineHeight="0" py="1px">
-                  <Icon as={FaRegStar} fontSize="12px" color="gray" mr="2" />
-                  <Text fontSize="12px" color="gray">Emails</Text>
-                </Flex>
+                <SidebarItem icon={FaRegStar} label="Project History" />
+                <SidebarItem icon={FaRegStar} label="Client History" />
+                <SidebarItem icon={FaRegStar} label="Emails" />
               </Box>
-              
-              {/* Divider */}
+
               <Divider borderColor="gray.400" borderWidth="1px" my="4" />
 
               {/* Accordion for Workspaces */}
-              <Flex direction="column">
-                <Flex direction="row" align="center" mb="2" justify="space-between">
-                  <Text fontSize="12px" fontWeight="bold" color="black">
-                    WORKSPACES
-                  </Text>
-                  <Button
-                    size="xs"
-                    colorScheme="gray"
-                    borderRadius="9999px"
-                    px="2"
-                    py="1"
-                    fontSize="10px"
-                  >
-                    Coming Soon
-                  </Button>
-                </Flex>
-                <Accordion allowToggle>
-                  <AccordionItem border="none">
-                    <h2>
-                      <AccordionButton border="none" backgroundColor="transparent">
-                        <Box as="span" flex="1" textAlign="left">
-                          Workspace Name 1
-                        </Box>
-                        <AccordionIcon />
-                      </AccordionButton>
-                    </h2>
-                    <AccordionPanel pb={4} fontSize="10px" color="black">
-                      Details about Workspace 1
-                    </AccordionPanel>
-                  </AccordionItem>
-                  <AccordionItem border="none">
-                    <h2>
-                      <AccordionButton border="none" backgroundColor="transparent">
-                        <Box as="span" flex="1" textAlign="left">
-                          Workspace Name 2
-                        </Box>
-                        <AccordionIcon />
-                      </AccordionButton>
-                    </h2>
-                    <AccordionPanel pb={4} fontSize="10px" color="black">
-                      Details about Workspace 2
-                    </AccordionPanel>
-                  </AccordionItem>
-                  <AccordionItem border="none">
-                    <h2>
-                      <AccordionButton border="none" backgroundColor="transparent">
-                        <Box as="span" flex="1" textAlign="left">
-                          Workspace Name 3
-                        </Box>
-                        <AccordionIcon />
-                      </AccordionButton>
-                    </h2>
-                    <AccordionPanel pb={4} fontSize="10px" color="black">
-                      Details about Workspace 3
-                    </AccordionPanel>
-                  </AccordionItem>
-                </Accordion>
-                <Button
-                  mt="4"
-                  variant="link"
-                  color="blue.500"
-                  _hover={{
-                    color: 'red.800',
-                    textDecoration: 'underline'
-                  }}
-                  _active={{
-                    color: 'blue.600',
-                  }}
-                  border="none"
-                  backgroundColor="transparent"
-                >
-                  See All
-                </Button>
-                <Box mt="4" />
-                {/* Accordion for Launchpad */}
-                <Text fontSize="12px" fontWeight="bold" color="black" mb="2">
-                  LAUNCHPAD
-                </Text>
-                <Accordion allowToggle>
-                  <AccordionItem border="none">
-                    <h2>
-                      <AccordionButton border="none" backgroundColor="transparent">
-                        <Box as="span" flex="1" textAlign="left">
-                          Business Name 1
-                        </Box>
-                        <AccordionIcon />
-                      </AccordionButton>
-                    </h2>
-                    <AccordionPanel pb={4} fontSize="10px" color="black">
-                      Details about Business 1
-                    </AccordionPanel>
-                  </AccordionItem>
-                  <AccordionItem border="none">
-                    <h2>
-                      <AccordionButton border="none" backgroundColor="transparent">
-                        <Box as="span" flex="1" textAlign="left">
-                          Business Name 2
-                        </Box>
-                        <AccordionIcon />
-                      </AccordionButton>
-                    </h2>
-                    <AccordionPanel pb={4} fontSize="10px" color="black">
-                      Details about Business 2
-                    </AccordionPanel>
-                  </AccordionItem>
-                  <AccordionItem border="none">
-                    <h2>
-                      <AccordionButton border="none" backgroundColor="transparent">
-                        <Box as="span" flex="1" textAlign="left">
-                          Business Name 3
-                        </Box>
-                        <AccordionIcon />
-                      </AccordionButton>
-                    </h2>
-                    <AccordionPanel pb={4} fontSize="10px" color="black">
-                      Details about Business 3
-                    </AccordionPanel>
-                  </AccordionItem>
-                </Accordion>
-                <Button
-                  mt="4"
-                  variant="link"
-                  color="blue.500"
-                  _hover={{
-                    color: 'red.800',
-                    textDecoration: 'underline'
-                  }}
-                  _active={{
-                    color: 'blue.600',
-                  }}
-                  border="none"
-                  backgroundColor="transparent"
-                >
-                  See All
-                </Button>
-              </Flex>
+              <AccordionSection title="WORKSPACES" buttonLabel="Coming Soon" />
+
+              <Divider borderColor="gray.400" borderWidth="1px" my="4" />
+
+              {/* Accordion for Launchpad */}
+              <AccordionSection title="LAUNCHPAD" mb="10"/>
+             
             </Flex>
           </Flex>
         </Box>
       </Flex>
-
+      <Box mt="5">
+{/* Pinned Projects Accordion */}
+              <AccordionSection
+                title="PINNED PROJECTS (3/3)"
+                buttonLabel={null}
+                items={[
+                  "Project Name 1",
+                  "Project Name 2",
+                  "Project Name 3",
+                ]}
+              />
+              </Box>
       {/* Sticky Footer */}
-      <Flex
-        direction="column"
-        mt="auto"
-        position="sticky"
-        bottom="0"
-        bg="white"
-        p="4"
-        boxShadow="md"
-        zIndex="10"
-        borderTop="1px solid #E2E8F0"
-      >
-    {/* Account Settings and Logout */}
-      <Flex direction="column" mb="4">
-        <Box as="ul" listStyleType="none" p="0" m="0">
-          <Flex as="li" align="center" mb="0" lineHeight="0" py="1px">
-            <Icon as={FaRegStar} fontSize="12px" color="gray" mr="2" />
-            <Text fontSize="12px" color="gray">Account Settings</Text>
-          </Flex>
-          <Flex as="li" align="center" mb="0" lineHeight="0" py="1px">
-            <Icon as={FaRegStar} fontSize="12px" color="gray" mr="2" />
-            <Text fontSize="12px" color="gray">Logout</Text>
-          </Flex>
-        </Box>
-      </Flex>
-      </Flex>
+      <Box mt="auto" position="sticky" bottom="0" left="0" width="100%" bg="#F4F6FA" p="1">
+        <SidebarItem icon={FaRegStar} label="Account Settings" />
+        <SidebarItem icon={FaRegStar} label="Logout" />
+      </Box>
     </Box>
   );
 };
 
+const SidebarItem = ({ icon, label }) => (
+  <Flex as="li" align="center" mb="0" py="1px">
+    <Icon as={icon} fontSize="12px" color="gray" mr="2" />
+    <Text fontSize="12px" color="gray">
+      {label}
+    </Text>
+  </Flex>
+);
+
+const AccordionSection = ({ title, buttonLabel, items }) => (
+  <Flex direction="column">
+    <Flex direction="row" align="center" mb="2" justify="space-between">
+      <Text fontSize="10px" fontWeight="bold" color="black">
+        {title}
+      </Text>
+      {buttonLabel && (
+        <Button
+          size="xs"
+          color="white"
+          bg="#5876b7"
+          borderRadius="full"
+          px={2}
+          py={1}
+          fontSize="10px"
+        >
+          {buttonLabel}
+        </Button>
+      )}
+    </Flex>
+    <Accordion allowToggle>
+      {(items || Array.from({ length: 3 }, (_, index) => `Workspace Name ${index + 1}`)).map(
+        (item, index) => (
+          <AccordionItem key={index} border="none">
+            <AccordionButton
+              border="none"
+              backgroundColor="transparent"
+              fontSize="10px"
+              color="black"
+            >
+              <Box as="span" flex="1" textAlign="left">
+                {item}
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel pb={4} fontSize="10px" color="black">
+              Details about {item}
+            </AccordionPanel>
+          </AccordionItem>
+        )
+      )}
+    </Accordion>
+    <Button
+      fontSize="10px"
+      variant="link"
+      color="blue.500"
+      _hover={{ textDecoration: "underline" }}
+      _active={{ color: "blue.600" }}
+    >
+      See All
+    </Button>
+  </Flex>
+);
+
 export default Sidebar;
-
-
