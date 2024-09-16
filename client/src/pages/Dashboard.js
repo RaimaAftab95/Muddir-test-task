@@ -1,11 +1,27 @@
 import React from "react";
-import { Box, Grid, GridItem, Text, HStack, Tabs, TabList, TabPanels, Tab, TabPanel, Button, Circle } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  GridItem,
+  Text,
+  HStack,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Button,
+  Circle,
+  useBreakpointValue
+} from "@chakra-ui/react";
 import { BiSolidFolderOpen, BiPlus, BiBook, BiCalculator } from "react-icons/bi";
 import Card from "../components/Card";
 
 const Dashboard = () => {
+  const iconsPerRow = useBreakpointValue({ base: 2, md: 3 });
+  const buttonMargin = useBreakpointValue({ base: "2rem 0", md: "0" });
   return (
-    <Box p="8" ml="260px">
+    <Box p={[4, 6, 8]} ml={[0, 0, "260px"]}>
       <Text fontSize="3xl" fontWeight="bold" mb="6">
         Welcome back Haseena!
       </Text>
@@ -13,27 +29,27 @@ const Dashboard = () => {
         You have accomplished a lot today. Let us handle the rest.
       </Text>
 
-      {/* Grid for Folder Icons*/}
-      <Grid templateColumns="repeat(4, 1fr)" gap={6} mb="6">
-      
+      <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={6} mb="6">
         <GridItem>
           <HStack spacing="4" align="center">
-            <BiSolidFolderOpen fontSize="40px" color="#3caf7d"/>
+            <BiSolidFolderOpen fontSize="40px" color="#3caf7d" />
             <Box textAlign="left">
               <Text fontSize="sm">
-                <span>30</span><br />
-                <span style={{ color: 'green' }}>Completed</span>
+                <span>30</span>
+                <br />
+                <span style={{ color: "green" }}>Completed</span>
               </Text>
             </Box>
           </HStack>
         </GridItem>
         <GridItem>
           <HStack spacing="4" align="center">
-            <BiSolidFolderOpen fontSize="40px" color="#5876b7" /> 
+            <BiSolidFolderOpen fontSize="40px" color="#5876b7" />
             <Box textAlign="left">
               <Text fontSize="sm">
-                <span>02</span><br />
-                <span style={{ color: 'green' }}>Ongoing</span>
+                <span>02</span>
+                <br />
+                <span style={{ color: "green" }}>Ongoing</span>
               </Text>
             </Box>
           </HStack>
@@ -43,8 +59,9 @@ const Dashboard = () => {
             <BiSolidFolderOpen fontSize="40px" color="#de9654" />
             <Box textAlign="left">
               <Text fontSize="sm">
-                <span>04</span><br />
-                <span style={{ color: 'green' }}>Drafts</span>
+                <span>04</span>
+                <br />
+                <span style={{ color: "green" }}>Drafts</span>
               </Text>
             </Box>
           </HStack>
@@ -54,8 +71,9 @@ const Dashboard = () => {
             <BiSolidFolderOpen fontSize="40px" color="#fa7068" />
             <Box textAlign="left">
               <Text fontSize="sm">
-                <span>02</span><br />
-                <span style={{ color: 'green' }}>Cancelled</span>
+                <span>02</span>
+                <br />
+                <span style={{ color: "green" }}>Cancelled</span>
               </Text>
             </Box>
           </HStack>
@@ -64,8 +82,8 @@ const Dashboard = () => {
 
       {/* Tabs */}
       <HStack justifyContent="space-between" mb="6">
-      
-        <Box width="70%">
+        {/* <Box width={{ base: "100%", md: "70%" }}> */}
+          <Box mb={[4, 6]} display={['block', 'block', 'flex']} flexDirection={['column', 'row']} alignItems={['flex-start', 'center']}>
           <Tabs>
             <TabList>
               <Tab>Ongoing</Tab>
@@ -91,6 +109,7 @@ const Dashboard = () => {
           </Tabs>
         </Box>
 
+<Box display={['block', 'block', 'flex']} justifyContent={['center', 'flex-start']} mb={buttonMargin}>
         <Button
           leftIcon={
             <Circle size="30px" bg="white" border="1px solid #5876b7">
@@ -106,11 +125,10 @@ const Dashboard = () => {
         >
           Create Project
         </Button>
+        </Box>
       </HStack>
 
-      {/* Cards Grid */}
-      <Grid templateColumns="repeat(3, 1fr)" gap={6} mb="6">
-        {/* First Row of Cards */}
+      <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={6} mb="6">
         <GridItem>
           <Card heading="Make an E-commerce Website for a Brand Store" />
         </GridItem>
@@ -122,8 +140,7 @@ const Dashboard = () => {
         </GridItem>
       </Grid>
 
-      {/* Second Row of Cards */}
-      <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+      <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={6}>
         <GridItem>
           <Card heading="Launch a Social Media Campaign" />
         </GridItem>
@@ -135,25 +152,29 @@ const Dashboard = () => {
         </GridItem>
       </Grid>
 
-
-      {/* Text and Icons Row */}
-      <Grid templateColumns="repeat(3, 1fr)" gap={6} mt="10">
+      <Grid templateColumns={{ base: `repeat(${iconsPerRow}, 1fr)`, md: "repeat(3, 1fr)" }} gap={6} mt="10">
         <GridItem>
           <HStack spacing="4" justify="center" align="center" h="100%">
             <BiBook fontSize="30px" color="#5876b7" />
-            <Text fontSize="md" textAlign="center">Explore Documentation</Text>
+            <Text fontSize="md" textAlign="center">
+              Explore Documentation
+            </Text>
           </HStack>
         </GridItem>
         <GridItem>
           <HStack spacing="4" justify="center" align="center" h="100%">
             <BiCalculator fontSize="30px" color="#5876b7" />
-            <Text fontSize="md" textAlign="center">Cost Calculator</Text>
+            <Text fontSize="md" textAlign="center">
+              Cost Calculator
+            </Text>
           </HStack>
         </GridItem>
         <GridItem>
           <HStack spacing="4" justify="center" align="center" h="100%">
             <BiCalculator fontSize="30px" color="#5876b7" />
-            <Text fontSize="md" textAlign="center">Billing Calculator</Text>
+            <Text fontSize="md" textAlign="center">
+              Billing Calculator
+            </Text>
           </HStack>
         </GridItem>
       </Grid>
@@ -162,3 +183,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

@@ -12,33 +12,38 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 
 const Sidebar = () => {
   const [showFullEmail, setShowFullEmail] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   const handleEmailClick = () => {
     setShowFullEmail(!showFullEmail);
   };
 
-  return (
+  const SidebarContent = () => (
     <Box
       width="250px"
       bg="#F4F6FA"
       color="white"
-      position="fixed"
       p="4"
       pl="8"
       overflowY="auto"
       maxHeight="100vh"
     >
-      {/* Logo */}
       <Flex align="flex-start">
         <Image src="/Logo.png" alt="Logo" objectFit="contain" />
       </Flex>
 
-      {/* User Info */}
       <Flex direction="row" align="center" mb="2">
         <Flex align="center" mr="4">
           <Image
@@ -67,7 +72,6 @@ const Sidebar = () => {
         </Flex>
       </Flex>
 
-      {/* Buttons */}
       <Flex direction="row" gap="1">
         <Button
           bg="#DBE2F0"
@@ -95,7 +99,6 @@ const Sidebar = () => {
         </Button>
       </Flex>
 
-      {/* Main Dashboard Box */}
       <Flex direction="column" mt="5" align="center">
         <Box bg="#EBF0FA" width="240px" height="90vh">
           <Flex
@@ -119,39 +122,50 @@ const Sidebar = () => {
                 <SidebarItem icon={FaRegStar} label="Client History" />
                 <SidebarItem icon={FaRegStar} label="Emails" />
               </Box>
-
               <Divider borderColor="gray.400" borderWidth="1px" my="4" />
-
-              {/* Accordion for Workspaces */}
               <AccordionSection title="WORKSPACES" buttonLabel="Coming Soon" />
-
               <Divider borderColor="gray.400" borderWidth="1px" my="4" />
-
-              {/* Accordion for Launchpad */}
-              <AccordionSection title="LAUNCHPAD" mb="10"/>
-             
+              <AccordionSection title="LAUNCHPAD" mb="10" />
             </Flex>
           </Flex>
         </Box>
       </Flex>
+
       <Box mt="5">
-{/* Pinned Projects Accordion */}
-              <AccordionSection
-                title="PINNED PROJECTS (3/3)"
-                buttonLabel={null}
-                items={[
-                  "Project Name 1",
-                  "Project Name 2",
-                  "Project Name 3",
-                ]}
-              />
-              </Box>
-      {/* Sticky Footer */}
+        <AccordionSection
+          title="PINNED PROJECTS (3/3)"
+          buttonLabel={null}
+          items={["Project Name 1", "Project Name 2", "Project Name 3"]}
+        />
+      </Box>
+
       <Box mt="auto" position="sticky" bottom="0" left="0" width="100%" bg="#F4F6FA" p="1">
         <SidebarItem icon={FaRegStar} label="Account Settings" />
         <SidebarItem icon={FaRegStar} label="Logout" />
       </Box>
     </Box>
+  );
+
+  return (
+    <>
+      {isMobile ? (
+        <>
+          <Button onClick={onOpen}>Open Sidebar</Button>
+          <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+            <DrawerOverlay>
+              <DrawerContent>
+                <DrawerCloseButton />
+                <SidebarContent />
+              </DrawerContent>
+            </DrawerOverlay>
+          </Drawer>
+        </>
+      ) : (
+        <Box position="fixed" width="250px">
+          <SidebarContent />
+        </Box>
+      )}
+    </>
   );
 };
 
@@ -219,4 +233,3 @@ const AccordionSection = ({ title, buttonLabel, items }) => (
 );
 
 export default Sidebar;
-
