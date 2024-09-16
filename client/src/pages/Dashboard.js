@@ -13,9 +13,9 @@ const Dashboard = () => {
         You have accomplished a lot today. Let us handle the rest.
       </Text>
 
-      {/* Grid for Folder Icons with Text and Completion Status */}
+      {/* Grid for Folder Icons*/}
       <Grid templateColumns="repeat(4, 1fr)" gap={6} mb="6">
-        {/* Folder Icons */}
+      
         <GridItem>
           <HStack spacing="4" align="center">
             <BiSolidFolderOpen fontSize="40px" color="#3caf7d"/>
@@ -62,9 +62,9 @@ const Dashboard = () => {
         </GridItem>
       </Grid>
 
-      {/* Tabs with Button */}
+      {/* Tabs */}
       <HStack justifyContent="space-between" mb="6">
-        {/* Tabs */}
+      
         <Box width="70%">
           <Tabs>
             <TabList>
@@ -91,7 +91,6 @@ const Dashboard = () => {
           </Tabs>
         </Box>
 
-        {/* Create Project Button */}
         <Button
           leftIcon={
             <Circle size="30px" bg="white" border="1px solid #5876b7">
@@ -137,7 +136,7 @@ const Dashboard = () => {
       </Grid>
 
 
-      {/* New Row with Text and Icons */}
+      {/* Text and Icons Row */}
       <Grid templateColumns="repeat(3, 1fr)" gap={6} mt="10">
         <GridItem>
           <HStack spacing="4" justify="center" align="center" h="100%">

@@ -219,3 +219,4 @@ const AccordionSection = ({ title, buttonLabel, items }) => (
 );
 
 export default Sidebar;
+
