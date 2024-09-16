@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getItem, updateItem } from '../api/api';
 import { Text, Button, Box, Input, FormControl, FormLabel } from '@chakra-ui/react';
 import { toast } from 'react-toastify';
@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 const UpdateItem = () => {
   const { id } = useParams();
   const [item, setItem] = useState({ name: '', description: '', price: '' });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -25,7 +26,8 @@ const UpdateItem = () => {
     e.preventDefault();
     try {
       await updateItem(id, item);
-       toast.success('Item updated successfully');
+       toast.success('Project updated successfully');
+        navigate('/'); 
     } catch (error) {
       console.error(error);
     }
@@ -36,7 +38,7 @@ const UpdateItem = () => {
       <form onSubmit={handleSubmit}>
         <FormControl mb="4">
             <Text fontSize="2xl" fontWeight="bold" textAlign="center">
-        Update Item
+        Update Project
       </Text>
           <FormLabel>Name</FormLabel>
           <Input value={item.name} onChange={(e) => setItem({ ...item, name: e.target.value })} />
@@ -49,7 +51,7 @@ const UpdateItem = () => {
           <FormLabel>Price</FormLabel>
           <Input type="number" value={item.price} onChange={(e) => setItem({ ...item, price: e.target.value })} />
         </FormControl>
-        <Button type="submit" colorScheme="blue">Update Item</Button>
+        <Button type="submit" colorScheme="blue">Update Project</Button>
       </form>
     </Box>
   );

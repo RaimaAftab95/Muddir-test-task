@@ -20,6 +20,7 @@ import Card from "../components/Card";
 const Dashboard = () => {
   const iconsPerRow = useBreakpointValue({ base: 2, md: 3 });
   const buttonMargin = useBreakpointValue({ base: "2rem 0", md: "0" });
+
   return (
     <Box p={[4, 6, 8]} ml={[0, 0, "260px"]}>
       <Text fontSize="3xl" fontWeight="bold" mb="6">
@@ -80,53 +81,58 @@ const Dashboard = () => {
         </GridItem>
       </Grid>
 
-      {/* Tabs */}
-      <HStack justifyContent="space-between" mb="6">
-        {/* <Box width={{ base: "100%", md: "70%" }}> */}
-          <Box mb={[4, 6]} display={['block', 'block', 'flex']} flexDirection={['column', 'row']} alignItems={['flex-start', 'center']}>
-          <Tabs>
-            <TabList>
-              <Tab>Ongoing</Tab>
-              <Tab>Completed</Tab>
-              <Tab>Cancelled</Tab>
-              <Tab>Drafts</Tab>
-            </TabList>
-
-            <TabPanels>
-              <TabPanel>
-                <Text>Ongoing</Text>
-              </TabPanel>
-              <TabPanel>
-                <Text>Completed</Text>
-              </TabPanel>
-              <TabPanel>
-                <Text>Cancelled</Text>
-              </TabPanel>
-              <TabPanel>
-                <Text>Drafts</Text>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-        </Box>
-
-<Box display={['block', 'block', 'flex']} justifyContent={['center', 'flex-start']} mb={buttonMargin}>
-        <Button
-          leftIcon={
-            <Circle size="30px" bg="white" border="1px solid #5876b7">
-              <BiPlus color="#5876b7" />
-            </Circle>
-          }
-          bg="#5876b7"
-          color="white"
-          _hover={{ bg: "#8fa0d0" }}
-          borderRadius="md"
-          p="6"
-          size="xs"
+      <Box mb="6">
+        <HStack
+          spacing="4"
+          align="flex-start"
+          flexDirection={{ base: "column", md: "row" }}
         >
-          Create Project
-        </Button>
-        </Box>
-      </HStack>
+          <Box flex="1" mb={{ base: 4, md: 0 }}>
+            <Tabs >
+              <TabList>
+                <Tab>Ongoing</Tab>
+                <Tab>Completed</Tab>
+                <Tab>Cancelled</Tab>
+                <Tab>Drafts</Tab>
+              </TabList>
+
+              <TabPanels>
+                <TabPanel>
+                  <Text>Ongoing</Text>
+                </TabPanel>
+                <TabPanel>
+                  <Text>Completed</Text>
+                </TabPanel>
+                <TabPanel>
+                  <Text>Cancelled</Text>
+                </TabPanel>
+                <TabPanel>
+                  <Text>Drafts</Text>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+          </Box>
+
+          <Box flex="1" display="flex" justifyContent={{ base: "center", md: "flex-end" }} mb={buttonMargin}>
+            <Button
+              leftIcon={
+                <Circle size="30px" bg="white" border="1px solid #5876b7">
+                  <BiPlus color="#5876b7" />
+                </Circle>
+              }
+              bg="#5876b7"
+              color="white"
+              _hover={{ bg: "#8fa0d0" }}
+              borderRadius="md"
+              p="6"
+              size="xs"
+              width={{ base: "100%", md: "auto" }} 
+            >
+              Create Project
+            </Button>
+          </Box>
+        </HStack>
+      </Box>
 
       <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={6} mb="6">
         <GridItem>
@@ -183,4 +189,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

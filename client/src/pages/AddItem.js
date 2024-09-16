@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState  } from 'react';
 import { createItem } from '../api/api';
 import { Text, Button, Box, Input, FormControl, FormLabel } from '@chakra-ui/react';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const AddItem = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
+   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,6 +17,8 @@ const AddItem = () => {
       setName('');
       setDescription('');
       setPrice('');
+      toast.success('Project added successfully');
+       navigate('/'); 
     } catch (error) {
       console.error(error);
     }
@@ -24,7 +29,7 @@ const AddItem = () => {
       <form onSubmit={handleSubmit}>
         <FormControl mb="4">
         <Text fontSize="2xl" fontWeight="bold" textAlign="center">
-        Add Item
+        Add Project
         </Text>
           <FormLabel>Name</FormLabel>
           <Input value={name} onChange={(e) => setName(e.target.value)} />
@@ -37,7 +42,7 @@ const AddItem = () => {
           <FormLabel>Price</FormLabel>
           <Input type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
         </FormControl>
-        <Button type="submit" colorScheme="blue">Add Item</Button>
+        <Button type="submit" colorScheme="blue">Add Project</Button>
       </form>
     </Box>
   );

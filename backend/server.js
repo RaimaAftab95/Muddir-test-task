@@ -7,7 +7,6 @@ require('dotenv').config();
 app.use(express.json());
 app.use(cors());
 
-// MongoDB connection
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -17,11 +16,9 @@ mongoose.connect(process.env.MONGODB_URI, {
   console.error('MongoDB connection error:', error);
 });
 
-// Define routes
 const itemRoutes = require('./routes/items');
 app.use('/api/items', itemRoutes);
 
-// Server
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

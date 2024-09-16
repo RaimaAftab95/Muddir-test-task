@@ -25,7 +25,7 @@ const ItemsList = () => {
     try {
       await deleteItem(id);
       setItems(items.filter(item => item._id !== id));
-       toast.error('Item deleted successfully'); // notification
+       toast.error('Item deleted successfully');
     } catch (error) {
       console.error(error);
     }
@@ -33,18 +33,17 @@ const ItemsList = () => {
 
   const handleUpdate = (id) => {
     navigate(`/update/${id}`);
-    toast.success('update your item'); // Show success notification
+    toast.success('update your item');
    
   };
 
     const handleAddItem = () => {
-    navigate('/add'); // Navigate to the Add Item page
+    navigate('/add'); 
   };
 
   return (
     <Box p="4" ml={{ base: "0", md: "260px" , lg: "260" }}>
       <Text  mb="4" fontSize="2xl" fontWeight="bold" textAlign="center">Projects List</Text>
-      {/* Add Item Button */}
       <Button color="#5876b7" mb="4" onClick={handleAddItem}>
         Add Project
       </Button>
