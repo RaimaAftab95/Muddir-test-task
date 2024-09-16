@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getItem, updateItem } from '../api/api';
-import { Button, Box, Input, FormControl, FormLabel } from '@chakra-ui/react';
+import { Text, Button, Box, Input, FormControl, FormLabel } from '@chakra-ui/react';
 import { toast } from 'react-toastify';
 
 const UpdateItem = () => {
@@ -25,17 +25,19 @@ const UpdateItem = () => {
     e.preventDefault();
     try {
       await updateItem(id, item);
-       toast.success('Item updated successfully'); // Show success notification
+       toast.success('Item updated successfully');
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <Box p="4" ml="260px">
+    <Box p="4" ml={{ base: "0", md: "260px" , lg: "260" }}>
       <form onSubmit={handleSubmit}>
         <FormControl mb="4">
-            <h1>Update Item</h1>
+            <Text fontSize="2xl" fontWeight="bold" textAlign="center">
+        Update Item
+      </Text>
           <FormLabel>Name</FormLabel>
           <Input value={item.name} onChange={(e) => setItem({ ...item, name: e.target.value })} />
         </FormControl>

@@ -38,8 +38,8 @@ const ItemsList = () => {
   };
 
   return (
-    <Box p="4" ml="260px">
-      <Text fontSize="2xl" mb="4">Items List</Text>
+    <Box p="4" ml={{ base: "0", md: "260px" , lg: "260" }}>
+      <Text  mb="4" fontSize="2xl" fontWeight="bold" textAlign="center">Items List</Text>
       {items.map(item => (
         <Box key={item._id} mb="4" p="4" borderWidth="1px" borderRadius="md">
           <Text fontSize="xl">{item.name}</Text>

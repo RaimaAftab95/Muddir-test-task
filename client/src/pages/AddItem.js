@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createItem } from '../api/api';
-import { Button, Box, Input, FormControl, FormLabel } from '@chakra-ui/react';
+import { Text, Button, Box, Input, FormControl, FormLabel } from '@chakra-ui/react';
 
 const AddItem = () => {
   const [name, setName] = useState('');
@@ -20,10 +20,12 @@ const AddItem = () => {
   };
 
   return (
-    <Box p="4" ml="260px">
+    <Box p="4" ml={{ base: "0", md: "260px" , lg: "260" }}>
       <form onSubmit={handleSubmit}>
         <FormControl mb="4">
-            <h1>Add Item</h1>
+        <Text fontSize="2xl" fontWeight="bold" textAlign="center">
+        Add Item
+        </Text>
           <FormLabel>Name</FormLabel>
           <Input value={name} onChange={(e) => setName(e.target.value)} />
         </FormControl>
